@@ -1,0 +1,262 @@
+import p1Image from '../../assets/HomePage/p1.png'
+import p2Image from '../../assets/HomePage/p2.png'
+import p3Image from '../../assets/HomePage/p3.png'
+import p4Image from '../../assets/HomePage/p4.png'
+
+export default function GettingDressedSection() {
+    return (
+        <section className="mt-6 rounded-3xl bg-white px-4 py-11 md:mt-8 md:px-6 md:py-16">
+            <h2 className="mb-8 text-center text-[1.55rem] font-normal leading-tight tracking-tight text-[#2A2A2A] md:mb-12 md:text-[clamp(2rem,3.5vw,2.8rem)]">
+                Getting dressed
+                <br />
+                should feel this easy
+            </h2>
+            <div
+                style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1.35fr 1fr",
+                    gridTemplateRows: "1fr 1fr",
+                    gap: "20px",
+                    width: "100%",
+                    maxWidth: "1100px",
+                    margin: "0 auto",
+                    padding: "16px",
+                    fontFamily: "'Söhne', 'Helvetica Neue', sans-serif",
+                }}
+            >
+                {/* Card 1 — Left, spans 2 rows */}
+                <article
+                    style={{
+                        gridColumn: "1",
+                        gridRow: "1 / 3",
+                        backgroundColor: "#EEEEEE",
+                        borderRadius: "18px",
+                        overflow: "hidden",
+                        display: "flex",
+                        flexDirection: "column",
+                        transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                        cursor: "pointer",
+                    }}
+                    onMouseEnter={e => {
+                        e.currentTarget.style.transform = "translateY(-4px)";
+                        e.currentTarget.style.boxShadow = "0 16px 40px rgba(0,0,0,0.09)";
+                    }}
+                    onMouseLeave={e => {
+                        e.currentTarget.style.transform = "translateY(0)";
+                        e.currentTarget.style.boxShadow = "none";
+                    }}
+                >
+                    <p
+                        style={{
+                            margin: 0,
+                            padding: "16px 18px 12px",
+                            fontSize: "21px",
+                            fontWeight: "500",
+                            lineHeight: "1.4",
+                            color: "#000000",
+                            flexShrink: 0,
+                        }}
+                    >
+                        Look like your most<br />confident, fabulous self
+                    </p>
+                    <div style={{ flex: 1, overflow: "hidden", marginLeft: "24px" }}>
+                        <img
+                            src={p1Image}
+                            alt="Confident woman at dinner"
+                            style={{
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "cover",
+                                objectPosition: "top center",
+                                display: "block",
+                                borderRadius: "18px 0 18px 0",
+                            }}
+                        />
+                    </div>
+                </article>
+
+                {/* Card 2 — Middle top */}
+                <article
+                    style={{
+                        gridColumn: "2",
+                        gridRow: "1",
+                        backgroundColor: "#EEEEEE",
+                        borderRadius: "18px",
+                        overflow: "hidden",
+                        display: "flex",
+                        flexDirection: "column",
+                        transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                        cursor: "pointer",
+                    }}
+                    onMouseEnter={e => {
+                        e.currentTarget.style.transform = "translateY(-4px)";
+                        e.currentTarget.style.boxShadow = "0 16px 40px rgba(0,0,0,0.09)";
+                    }}
+                    onMouseLeave={e => {
+                        e.currentTarget.style.transform = "translateY(0)";
+                        e.currentTarget.style.boxShadow = "none";
+                    }}
+                >
+                    <p
+                        style={{
+                           margin: 0,
+                            padding: "16px 18px 12px",
+                            fontSize: "21px",
+                            fontWeight: "500",
+                            lineHeight: "1.4",
+                            color: "#000000",
+                            flexShrink: 0,
+                        }}
+                    >
+                        Walk in knowing your outfit looks right
+                    </p>
+                    <div style={{ flex: 1, overflow: "hidden", marginLeft: "40px" }}>
+                        <img
+                            src={p2Image}
+                            alt="Woman with coffee at home"
+                            style={{
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "cover",
+                                objectPosition: "top center",
+                                display: "block",
+                                borderRadius: "18px 0 18px 0",
+                            }}
+                        />
+                    </div>
+                </article>
+
+                {/* Card 3 — Middle bottom */}
+                <article
+                    style={{
+                        gridColumn: "2",
+                        gridRow: "2",
+                        backgroundColor: "#EEEEEE",
+                        borderRadius: "18px",
+                        overflow: "hidden",
+                        display: "flex",
+                        flexDirection: "column",
+                        transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                        cursor: "pointer",
+                    }}
+                    onMouseEnter={e => {
+                        e.currentTarget.style.transform = "translateY(-4px)";
+                        e.currentTarget.style.boxShadow = "0 16px 40px rgba(0,0,0,0.09)";
+                    }}
+                    onMouseLeave={e => {
+                        e.currentTarget.style.transform = "translateY(0)";
+                        e.currentTarget.style.boxShadow = "none";
+                    }}
+                >
+                    <p
+                        style={{
+                            margin: 0,
+                            padding: "16px 18px 12px",
+                            fontSize: "21px",
+                            fontWeight: "500",
+                            lineHeight: "1.4",
+                            color: "#000000",
+                            flexShrink: 0,
+                        }}
+                    >
+                        Decide what to wear in seconds
+                    </p>
+                    <div style={{ flex: 1, overflow: "hidden" , marginLeft: "40px"}}>
+                        <img
+                            src={p3Image}
+                            alt="Woman working out"
+                            style={{
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "cover",
+                                objectPosition: "top center",
+                                display: "block",
+                                borderRadius: "18px 0 18px 0",
+                            }}
+                        />
+                    </div>
+                </article>
+
+                {/* Card 4 — Right, spans 2 rows */}
+                <article
+                    style={{
+                        gridColumn: "3",
+                        gridRow: "1 / 3",
+                        backgroundColor: "#EEEEEE",
+                        borderRadius: "18px",
+                        overflow: "hidden",
+                        display: "flex",
+                        flexDirection: "column",
+                        transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                        cursor: "pointer",
+                    }}
+                    onMouseEnter={e => {
+                        e.currentTarget.style.transform = "translateY(-4px)";
+                        e.currentTarget.style.boxShadow = "0 16px 40px rgba(0,0,0,0.09)";
+                    }}
+                    onMouseLeave={e => {
+                        e.currentTarget.style.transform = "translateY(0)";
+                        e.currentTarget.style.boxShadow = "none";
+                    }}
+                >
+                    <p
+                        style={{
+                            margin: 0,
+                            padding: "16px 18px 12px",
+                            fontSize: "21px",
+                            fontWeight: "500",
+                            lineHeight: "1.4",
+                            color: "#000000",
+                            flexShrink: 0,
+                        }}
+                    >
+                        Get compliments more often
+                    </p>
+                    <div style={{ flex: 1, overflow: "hidden", marginLeft: "24px", borderRadius: "18px 0 18px 0" }}>
+                        <img
+                            src={p4Image}
+                            alt="Professional woman"
+                            style={{
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "cover",
+                                objectPosition: "top center",
+                                display: "block",
+                            }}
+                        />
+                    </div>
+                </article>
+            </div>
+
+            <div className="grid grid-cols-2 gap-2.5 md:hidden">
+                <article className="overflow-hidden rounded-[18px] bg-[#f7f4f0]">
+                    <p className="px-3.5 pb-2.5 pt-3 text-[0.76rem] font-medium leading-[1.4] text-[#1c1c1c]">
+                        Look like your most confident, fabulous self
+                    </p>
+                    <img src={p1Image} alt="Getting dressed" className="w-full h-full object-cover" />
+                </article>
+
+                <article className="overflow-hidden rounded-[18px] bg-[#f7f4f0]">
+                    <p className="px-3.5 pb-2.5 pt-3 text-[0.76rem] font-medium leading-[1.4] text-[#1c1c1c]">
+                        Walk in knowing your outfit looks right
+                    </p>
+                    <img src={p2Image} alt="Getting dressed" className="w-full h-full object-cover" />
+                </article>
+
+                <article className="overflow-hidden rounded-[18px] bg-[#f7f4f0]">
+                    <p className="px-3.5 pb-2.5 pt-3 text-[0.76rem] font-medium leading-[1.4] text-[#1c1c1c]">
+                        Decide what to wear in seconds
+                    </p>
+                    <img src={p3Image} alt="Getting dressed" className="w-full h-full object-cover" />
+                </article>
+
+                <article className="overflow-hidden rounded-[18px] bg-[#f7f4f0]">
+                    <p className="px-3.5 pb-2.5 pt-3 text-[0.76rem] font-medium leading-[1.4] text-[#1c1c1c]">
+                        Get compliments more often
+                    </p>
+                    <img src={p4Image} alt="Getting dressed" className="w-full h-full object-cover" />
+                </article>
+            </div>
+        </section>
+    )
+}
