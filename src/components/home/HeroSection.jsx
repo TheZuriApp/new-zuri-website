@@ -19,16 +19,39 @@ const slides = [
     },
 ]
 
+const mobileSlides = [slides[slides.length - 1], ...slides, slides[0]]
+
 export default function HeroSection() {
-    const [current, setCurrent] = useState(0)
+    const [current, setCurrent] = useState(1)
+    const [isSliding, setIsSliding] = useState(true)
     const startX = useRef(0)
 
     useEffect(() => {
         const timer = setInterval(() => {
-            setCurrent((prev) => (prev + 1) % slides.length)
+            setCurrent((prev) => prev + 1)
         }, 3000)
         return () => clearInterval(timer)
     }, [])
+
+    const onTransitionEnd = () => {
+        if (current === 0) {
+            setIsSliding(false)
+            setCurrent(slides.length)
+            return
+        }
+
+        if (current === slides.length + 1) {
+            setIsSliding(false)
+            setCurrent(1)
+        }
+    }
+
+    useEffect(() => {
+        if (!isSliding) {
+            const frame = requestAnimationFrame(() => setIsSliding(true))
+            return () => cancelAnimationFrame(frame)
+        }
+    }, [isSliding])
 
     const onTouchStart = (event) => {
         startX.current = event.touches[0]?.clientX ?? 0
@@ -38,17 +61,13 @@ export default function HeroSection() {
         const endX = event.changedTouches[0]?.clientX ?? 0
         const diff = startX.current - endX
         if (Math.abs(diff) > 40) {
-            setCurrent((prev) =>
-                diff > 0
-                    ? (prev + 1) % slides.length
-                    : (prev - 1 + slides.length) % slides.length,
-            )
+            setCurrent((prev) => (diff > 0 ? prev + 1 : prev - 1))
         }
     }
 
     return (
         <>
-            <section className="relative hidden h-145 overflow-hidden rounded-2xl md:grid md:grid-cols-3 ">
+            <section className="relative hidden h-145 overflow-hidden rounded-2xl md:grid md:grid-cols-3 mx-3">
                 {slides.map((slide, idx) => (
                     <div key={slide.key} className="group relative h-full overflow-hidden">
                         {/* Divider between slides */}
@@ -97,25 +116,34 @@ export default function HeroSection() {
                 </div>
             </section>
 
-            {/* <section
-                className="relative h-[88vw] max-h-130 overflow-hidden rounded-2xl md:hidden"
+            <section
+            // here have to adjust the height
+                className="relative h-[128vw] max-h-190 overflow-hidden rounded-2xl md:hidden mx-3"
                 onTouchStart={onTouchStart}
                 onTouchEnd={onTouchEnd}
             >
                 <div
-                    className="flex h-full w-[300%] transition-transform duration-500 ease-in-out"
-                    style={{ transform: `translateX(-${current * 33.333}%)` }}
+                    className={`flex h-full ${isSliding ? 'transition-transform duration-500 ease-in-out' : ''}`}
+                    style={{
+                        width: `${mobileSlides.length * 100}%`,
+                        transform: `translateX(-${(current * 100) / mobileSlides.length}%)`,
+                    }}
+                    onTransitionEnd={onTransitionEnd}
                 >
-                    {slides.map((slide) => (
-                        <div key={`mobile-${slide.key}`} className="relative h-full w-1/3 shrink-0">
+                    {mobileSlides.map((slide, idx) => (
+                        <div
+                            key={`mobile-${slide.key}-${idx}`}
+                            className="relative h-full shrink-0"
+                            style={{ width: `${100 / mobileSlides.length}%` }}
+                        >
                             <div
-                                className={`relative h-full w-full bg-cover bg-center transition-transform duration-6000 ease-out group-hover:scale-105`}
+                                className="relative h-full w-full bg-cover bg-center transition-transform duration-[6000ms] ease-out"
                             >
                                 <img
                                     src={slide.imgPath}
                                     alt={`Woman ${idx + 1}`}
-                                    loading={idx === 0 ? 'eager' : 'lazy'}
-                                    fetchPriority={idx === 0 ? 'high' : 'auto'}
+                                    loading={idx === 1 ? 'eager' : 'lazy'}
+                                    fetchPriority={idx === 1 ? 'high' : 'auto'}
                                     decoding="async"
                                     className="h-full w-full object-cover object-top"
                                 />
@@ -123,26 +151,31 @@ export default function HeroSection() {
 
                             <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[65%] bg-[linear-gradient(to_top,rgba(0,0,0,0.88)_0%,rgba(0,0,0,0.5)_55%,transparent_100%)]" />
 
-                            <div className="absolute inset-x-0 bottom-0 z-20 px-5.5 pb-6 pt-4">
+                            <div className="absolute inset-x-0 bottom-0 z-20 px-5.5 pb-6 pt-4 text-center flex flex-col items-center">
+
                                 <h2 className="text-[2.3rem] font-medium leading-none text-white">
                                     Show up looking
                                 </h2>
+
                                 <p className="mt-1 text-[0.95rem] text-white/90">
                                     Confident. Fabulous. Unforgettable.
                                 </p>
-                                <p className="mb-3 mt-2 text-[0.72rem] leading-[1.6] text-white/75">
+
+                                <p className="mb-3 mt-2 text-[0.72rem] leading-[1.6] text-white/75 max-w-[300px]">
                                     Zuri is a personal styling app that helps you always know what to wear
                                     for work, weekends, weddings, and everything in between.
                                 </p>
-                                <div className="flex flex-col gap-2">
+
+                                <div className="flex flex-col gap-2 items-center">
                                     <StoreBadge mobile />
                                     <StoreBadge apple mobile />
                                 </div>
+
                             </div>
                         </div>
                     ))}
                 </div>
-            </section> */}
+            </section>
         </>
     )
 }

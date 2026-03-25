@@ -5,7 +5,7 @@ import p4Image from '../../assets/HomePage/p4.png'
 
 export default function GettingDressedSection() {
     return (
-        <section className="mt-6 rounded-3xl bg-white px-4 py-11 md:mt-8 md:px-6 md:py-16">
+        <section className="rounded-3xl bg-white px-4 py-11 md:mt-8 md:px-6 md:py-16">
             <h2 className="mb-8 text-center text-[1.55rem] font-normal leading-tight tracking-tight text-[#2A2A2A] md:mb-12 md:text-[clamp(2rem,3.5vw,2.8rem)]">
                 Getting dressed
                 <br />
@@ -13,7 +13,6 @@ export default function GettingDressedSection() {
             </h2>
             <div
                 style={{
-                    display: "grid",
                     gridTemplateColumns: "1fr 1.35fr 1fr",
                     gridTemplateRows: "1fr 1fr",
                     gap: "20px",
@@ -21,8 +20,9 @@ export default function GettingDressedSection() {
                     maxWidth: "1100px",
                     margin: "0 auto",
                     padding: "16px",
-                    fontFamily: "'Söhne', 'Helvetica Neue', sans-serif",
+                    // fontFamily: "'Söhne', 'Helvetica Neue', sans-serif",
                 }}
+                className="hidden md:grid"
             >
                 {/* Card 1 — Left, spans 2 rows */}
                 <article
@@ -101,7 +101,7 @@ export default function GettingDressedSection() {
                 >
                     <p
                         style={{
-                           margin: 0,
+                            margin: 0,
                             padding: "16px 18px 12px",
                             fontSize: "21px",
                             fontWeight: "500",
@@ -165,7 +165,7 @@ export default function GettingDressedSection() {
                     >
                         Decide what to wear in seconds
                     </p>
-                    <div style={{ flex: 1, overflow: "hidden" , marginLeft: "40px"}}>
+                    <div style={{ flex: 1, overflow: "hidden", marginLeft: "40px" }}>
                         <img
                             src={p3Image}
                             alt="Woman working out"
@@ -235,35 +235,40 @@ export default function GettingDressedSection() {
                     </div>
                 </article>
             </div>
+            <div className="grid grid-cols-2 gap-3 md:hidden px-2">
 
-            <div className="grid grid-cols-2 gap-2.5 md:hidden">
-                <article className="overflow-hidden rounded-[18px] bg-[#f7f4f0]">
-                    <p className="px-3.5 pb-2.5 pt-3 text-[0.76rem] font-medium leading-[1.4] text-[#1c1c1c]">
-                        Look like your most confident, fabulous self
-                    </p>
-                    <img src={p1Image} alt="Getting dressed" loading="lazy" decoding="async" className="w-full h-full object-cover" />
-                </article>
+                {[
+                    { text: "Look like your most confident, fabulous self", img: p1Image },
+                    { text: "Walk in knowing your outfit looks right", img: p2Image },
+                    { text: "Decide what to wear in seconds", img: p3Image },
+                    { text: "Get compliments more often", img: p4Image },
+                ].map((item, idx) => (
 
-                <article className="overflow-hidden rounded-[18px] bg-[#f7f4f0]">
-                    <p className="px-3.5 pb-2.5 pt-3 text-[0.76rem] font-medium leading-[1.4] text-[#1c1c1c]">
-                        Walk in knowing your outfit looks right
-                    </p>
-                    <img src={p2Image} alt="Getting dressed" loading="lazy" decoding="async" className="w-full h-full object-cover" />
-                </article>
+                    <article
+                        key={idx}
+                        className="bg-[#F3F3F3] rounded-[8px] p-2.5 flex flex-col items-center justify-between"
+                    >
 
-                <article className="overflow-hidden rounded-[18px] bg-[#f7f4f0]">
-                    <p className="px-3.5 pb-2.5 pt-3 text-[0.76rem] font-medium leading-[1.4] text-[#1c1c1c]">
-                        Decide what to wear in seconds
-                    </p>
-                    <img src={p3Image} alt="Getting dressed" loading="lazy" decoding="async" className="w-full h-full object-cover" />
-                </article>
+                        {/* Text */}
+                        <p className="text-center text-[0.95rem] font-medium leading-[1] tracking-[-0.02em] text-[#1c1c1c] px-1">
+                            {item.text}
+                        </p>
 
-                <article className="overflow-hidden rounded-[18px] bg-[#f7f4f0]">
-                    <p className="px-3.5 pb-2.5 pt-3 text-[0.76rem] font-medium leading-[1.4] text-[#1c1c1c]">
-                        Get compliments more often
-                    </p>
-                    <img src={p4Image} alt="Getting dressed" loading="lazy" decoding="async" className="w-full h-full object-cover" />
-                </article>
+                        {/* Image */}
+                        <div className="mt-2 w-full overflow-hidden rounded-[8px]">
+                            <img
+                                src={item.img}
+                                alt="card"
+                                loading="lazy"
+                                decoding="async"
+                                className="w-full h-[180px] object-cover"
+                            />
+                        </div>
+
+                    </article>
+
+                ))}
+
             </div>
         </section>
     )
