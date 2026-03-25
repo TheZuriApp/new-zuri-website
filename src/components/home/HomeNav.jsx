@@ -3,7 +3,7 @@ import { StoreBadge } from './HeroPrimitives'
 
 export default function HomeNav() {
     return (
-        <nav className="relative flex items-center justify-between bg-white px-6 py-3 md:px-28 md:py-3.5">
+        <nav className="relative flex items-center justify-between bg-white px-6 py-3 md:px-28 md:py-2">
 
             <img
                 src={zuriLogo}

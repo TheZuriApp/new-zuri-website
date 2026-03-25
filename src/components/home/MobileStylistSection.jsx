@@ -2,7 +2,7 @@ import phoneShowcaseImage from '../../assets/HomePage/g4.png'
 
 export default function MobileStylistSection() {
     return (
-        <section className="w-full max-w-md mx-auto px-4 pt-10 pb-6 text-center">
+        <section className="md:hidden w-full max-w-md mx-auto px-4 pt-10 pb-6 text-center">
 
             {/* Top Heading */}
             <h2 className="text-[28px] leading-[1.2] font-medium text-[#2A2A2A] mb-6">
