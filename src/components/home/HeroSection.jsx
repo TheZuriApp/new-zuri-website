@@ -56,11 +56,14 @@ export default function HeroSection() {
                             <div className="absolute right-0 top-0 z-10 h-full w-[1px] bg-white/15" />
                         )}
                         <div
-                            className={`relative h-full w-full bg-cover bg-center transition-transform duration-[6000ms] ease-out group-hover:scale-105 ${slide.bgClass}`}
+                            className={`relative h-full w-full bg-cover bg-center transition-transform duration-[6000ms] ease-out group-hover:scale-105`}
                         >
                             <img
                                 src={slide.imgPath}
                                 alt={`Woman ${idx + 1}`}
+                                loading={idx === 0 ? 'eager' : 'lazy'}
+                                fetchPriority={idx === 0 ? 'high' : 'auto'}
+                                decoding="async"
                                 className="h-full w-full object-cover object-top"
                             />
                         </div>
@@ -94,59 +97,28 @@ export default function HeroSection() {
                 </div>
             </section>
 
-            <section
+            {/* <section
                 className="relative h-[88vw] max-h-130 overflow-hidden rounded-2xl md:hidden"
                 onTouchStart={onTouchStart}
                 onTouchEnd={onTouchEnd}
             >
-                <div className="absolute left-1/2 top-3.5 z-30 flex -translate-x-1/2 gap-1.5">
-                    {slides.map((slide, idx) => (
-                        <button
-                            key={`${slide.key}-dot`}
-                            type="button"
-                            onClick={() => setCurrent(idx)}
-                            className={`h-1.5 rounded-full transition-all ${current === idx ? 'w-5 bg-white' : 'w-1.5 bg-white/40'
-                                }`}
-                            aria-label={`Go to slide ${idx + 1}`}
-                        />
-                    ))}
-                </div>
-
                 <div
                     className="flex h-full w-[300%] transition-transform duration-500 ease-in-out"
                     style={{ transform: `translateX(-${current * 33.333}%)` }}
                 >
                     {slides.map((slide) => (
                         <div key={`mobile-${slide.key}`} className="relative h-full w-1/3 shrink-0">
-                            <div className={`relative h-full w-full ${slide.bgClass}`}>
-                                <div className={`absolute inset-0 ${slide.glowClass}`} />
-                                {slide.sparkle && (
-                                    <>
-                                        <div className="absolute left-[72%] top-[12%] h-2.5 w-2.5 rounded-full bg-[#ffdc78]/50" />
-                                        <div className="absolute right-[8%] top-[28%] h-1.5 w-1.5 rounded-full bg-[#ffc850]/40" />
-                                        <div className="absolute right-[22%] top-[6%] h-3.5 w-3.5 rounded-full bg-[#ffe68c]/30" />
-                                        <div className="absolute right-[4%] top-[42%] h-1.5 w-1.5 rounded-full bg-[#ffd264]/45" />
-                                    </>
-                                )}
-
-                                <svg
-                                    className="absolute bottom-0 left-1/2 -translate-x-1/2 opacity-15"
-                                    width="200"
-                                    height="400"
-                                    viewBox="0 0 200 400"
-                                    fill="none"
-                                    aria-hidden="true"
-                                >
-                                    <ellipse cx="100" cy="65" rx="45" ry="55" fill="white" />
-                                    <path
-                                        d={
-                                            slide.key === 'gold'
-                                                ? 'M20 400 Q40 230 100 180 Q160 230 180 400Z'
-                                                : 'M25 400 Q45 240 100 190 Q155 240 175 400Z'
-                                        }
-                                        fill="white"
-                                    />
-                                </svg>
+                            <div
+                                className={`relative h-full w-full bg-cover bg-center transition-transform duration-6000 ease-out group-hover:scale-105`}
+                            >
+                                <img
+                                    src={slide.imgPath}
+                                    alt={`Woman ${idx + 1}`}
+                                    loading={idx === 0 ? 'eager' : 'lazy'}
+                                    fetchPriority={idx === 0 ? 'high' : 'auto'}
+                                    decoding="async"
+                                    className="h-full w-full object-cover object-top"
+                                />
                             </div>
 
                             <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[65%] bg-[linear-gradient(to_top,rgba(0,0,0,0.88)_0%,rgba(0,0,0,0.5)_55%,transparent_100%)]" />
@@ -170,7 +142,7 @@ export default function HeroSection() {
                         </div>
                     ))}
                 </div>
-            </section>
+            </section> */}
         </>
     )
 }

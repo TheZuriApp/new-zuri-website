@@ -63,6 +63,8 @@ export default function GettingDressedSection() {
                         <img
                             src={p1Image}
                             alt="Confident woman at dinner"
+                            loading="lazy"
+                            decoding="async"
                             style={{
                                 width: "100%",
                                 height: "100%",
@@ -114,6 +116,8 @@ export default function GettingDressedSection() {
                         <img
                             src={p2Image}
                             alt="Woman with coffee at home"
+                            loading="lazy"
+                            decoding="async"
                             style={{
                                 width: "100%",
                                 height: "100%",
@@ -165,6 +169,8 @@ export default function GettingDressedSection() {
                         <img
                             src={p3Image}
                             alt="Woman working out"
+                            loading="lazy"
+                            decoding="async"
                             style={{
                                 width: "100%",
                                 height: "100%",
@@ -216,6 +222,8 @@ export default function GettingDressedSection() {
                         <img
                             src={p4Image}
                             alt="Professional woman"
+                            loading="lazy"
+                            decoding="async"
                             style={{
                                 width: "100%",
                                 height: "100%",
@@ -233,28 +241,28 @@ export default function GettingDressedSection() {
                     <p className="px-3.5 pb-2.5 pt-3 text-[0.76rem] font-medium leading-[1.4] text-[#1c1c1c]">
                         Look like your most confident, fabulous self
                     </p>
-                    <img src={p1Image} alt="Getting dressed" className="w-full h-full object-cover" />
+                    <img src={p1Image} alt="Getting dressed" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                 </article>
 
                 <article className="overflow-hidden rounded-[18px] bg-[#f7f4f0]">
                     <p className="px-3.5 pb-2.5 pt-3 text-[0.76rem] font-medium leading-[1.4] text-[#1c1c1c]">
                         Walk in knowing your outfit looks right
                     </p>
-                    <img src={p2Image} alt="Getting dressed" className="w-full h-full object-cover" />
+                    <img src={p2Image} alt="Getting dressed" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                 </article>
 
                 <article className="overflow-hidden rounded-[18px] bg-[#f7f4f0]">
                     <p className="px-3.5 pb-2.5 pt-3 text-[0.76rem] font-medium leading-[1.4] text-[#1c1c1c]">
                         Decide what to wear in seconds
                     </p>
-                    <img src={p3Image} alt="Getting dressed" className="w-full h-full object-cover" />
+                    <img src={p3Image} alt="Getting dressed" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                 </article>
 
                 <article className="overflow-hidden rounded-[18px] bg-[#f7f4f0]">
                     <p className="px-3.5 pb-2.5 pt-3 text-[0.76rem] font-medium leading-[1.4] text-[#1c1c1c]">
                         Get compliments more often
                     </p>
-                    <img src={p4Image} alt="Getting dressed" className="w-full h-full object-cover" />
+                    <img src={p4Image} alt="Getting dressed" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                 </article>
             </div>
         </section>
