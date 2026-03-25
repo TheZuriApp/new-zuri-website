@@ -118,7 +118,7 @@ export default function HeroSection() {
 
             <section
             // here have to adjust the height
-                className="relative h-[128vw] max-h-190 overflow-hidden rounded-2xl md:hidden mx-3"
+                className="relative h-[168vw] max-h-290 overflow-hidden rounded-2xl md:hidden mx-3"
                 onTouchStart={onTouchStart}
                 onTouchEnd={onTouchEnd}
             >
