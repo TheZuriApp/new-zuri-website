@@ -4,7 +4,7 @@ import BookmarkSvg from '../../assets/HomePage/bookmark.svg'
 import LightningSvg from '../../assets/HomePage/lightning.svg'
 import InstagramSvg from '../../assets/HomePage/instagram.svg'
 import LinkedInSvg from '../../assets/HomePage/linkedin.svg'
-import ZuriLogo from '../../assets/zuri.svg'
+import ZuriLogo from '../../assets/ZURI.svg'
 import ShimmerImage from './ShimmerImage'
 
 
