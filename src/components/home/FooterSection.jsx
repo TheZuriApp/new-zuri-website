@@ -5,6 +5,7 @@ import LightningSvg from '../../assets/HomePage/lightning.svg'
 import InstagramSvg from '../../assets/HomePage/instagram.svg'
 import LinkedInSvg from '../../assets/HomePage/linkedin.svg'
 import ZuriLogo from '../../assets/zuri.svg'
+import ShimmerImage from './ShimmerImage'
 
 
 export default function FooterSection() {
@@ -28,7 +29,7 @@ export default function FooterSection() {
                         {/* Mobile: icon + title inline */}
                         <div className="flex items-center gap-3 md:flex-col md:items-start md:gap-3.5">
                             <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] bg-[#7C1631] text-white md:h-9.5 md:w-9.5">
-                                <img src={BookmarkSvg} alt="Bookmark" loading="lazy" decoding="async" />
+                                <ShimmerImage src={BookmarkSvg} alt="Bookmark" loading="lazy" decoding="async" />
                             </div>
                             <p className="text-[17px] font-medium text-[#2A2A2A] md:text-[21px]">
                                 Save outfits/looks you
@@ -46,7 +47,7 @@ export default function FooterSection() {
                     <article className="flex flex-col gap-3 pb-6 md:px-8 md:pb-0 md:gap-3.5">
                         <div className="flex items-center gap-3 md:flex-col md:items-start md:gap-3.5">
                             <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] bg-[#7C1631] text-white md:h-9.5 md:w-9.5">
-                                <img src={LightningSvg} alt="Lightning" loading="lazy" decoding="async" />
+                                <ShimmerImage src={LightningSvg} alt="Lightning" loading="lazy" decoding="async" />
                             </div>
                             <p className="text-[17px] font-medium text-[#2A2A2A] md:text-[21px]">
                                 Any Outfit in Seconds
@@ -61,7 +62,7 @@ export default function FooterSection() {
                     <article className="flex flex-col gap-3 md:pl-8 md:gap-3.5">
                         <div className="flex items-center gap-3 md:flex-col md:items-start md:gap-3.5">
                             <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] bg-[#7C1631] text-white md:h-9.5 md:w-9.5">
-                                <img src={BookOpenSvg} alt="Book Open" loading="lazy" decoding="async" />
+                                <ShimmerImage src={BookOpenSvg} alt="Book Open" loading="lazy" decoding="async" />
                             </div>
                             <p className="text-[17px] font-medium text-[#2A2A2A] md:text-[21px]">
                                 Zuri Magazine
@@ -107,14 +108,14 @@ export default function FooterSection() {
                                     aria-label="Instagram"
                                     className="flex h-12 w-12 items-center justify-center rounded-full border-[1.633px] border-[#00000033] bg-white transition hover:border-[#888] hover:bg-black/4 md:h-14 md:w-14"
                                 >
-                                    <img src={InstagramSvg} alt="Instagram" loading="lazy" decoding="async" />
+                                    <ShimmerImage src={InstagramSvg} alt="Instagram" loading="lazy" decoding="async" />
                                 </a>
                                 <a
                                     href="#"
                                     aria-label="LinkedIn"
                                     className="flex h-12 w-12 items-center justify-center rounded-full border-[1.633px] border-[#00000033] bg-white transition hover:border-[#888] hover:bg-black/4 md:h-14 md:w-14"
                                 >
-                                    <img src={LinkedInSvg} alt="LinkedIn" loading="lazy" decoding="async" />
+                                    <ShimmerImage src={LinkedInSvg} alt="LinkedIn" loading="lazy" decoding="async" />
                                 </a>
                             </div>
                         </div>
@@ -144,14 +145,14 @@ export default function FooterSection() {
                         >
                             Privacy Policy
                         </a>
-                        <img className="h-4" src={ZuriLogo} alt="Zuri Logo" loading="lazy" decoding="async" />
+                        <ShimmerImage className="h-4" src={ZuriLogo} alt="Zuri Logo" loading="lazy" decoding="async" />
                         <span className="text-[0.9rem] text-[#666666]">©All Rights Reserved 2026</span>
                     </div>
 
                     {/* Desktop layout */}
                     <div className="hidden md:flex md:flex-row md:items-center md:justify-between md:gap-4">
                         <span className="text-[1rem] text-[#666666]">©All Rights Reserved 2026</span>
-                        <img className="h-4" src={ZuriLogo} alt="Zuri Logo" loading="lazy" decoding="async" />
+                        <ShimmerImage className="h-4" src={ZuriLogo} alt="Zuri Logo" loading="lazy" decoding="async" />
                         <a
                             href="#"
                             className="cursor-pointer text-[1rem] text-[#121212] underline underline-offset-[3px]"

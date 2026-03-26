@@ -1,4 +1,5 @@
 import phoneShowcaseImage from '../../assets/HomePage/g4.png'
+import ShimmerImage from './ShimmerImage'
 
 export default function MobileStylistSection() {
     return (
@@ -15,7 +16,7 @@ export default function MobileStylistSection() {
             <div className="relative w-full overflow-hidden rounded-[28px]">
 
                 {/* Phones Image */}
-                <img
+                <ShimmerImage
                     src={phoneShowcaseImage}
                     alt="Zuri app preview"
                     className="w-full h-auto object-cover"

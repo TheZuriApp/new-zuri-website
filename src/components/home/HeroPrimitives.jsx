@@ -1,5 +1,6 @@
 import AppleIcon from '../../assets/HomePage/app_store.svg'
 import GooglePlayIcon from '../../assets/HomePage/google_play.svg'
+import ShimmerImage from './ShimmerImage'
 
 export function StoreBadge({ apple = false, mobile = false }) {
     const iconSrc = apple ? AppleIcon : GooglePlayIcon
@@ -15,7 +16,7 @@ export function StoreBadge({ apple = false, mobile = false }) {
 
     return (
         <a href="#" className={containerClasses}>
-            <img src={iconSrc} alt={main} className={iconSize} />
+            <ShimmerImage src={iconSrc} alt={main} className={iconSize} />
             <span className="flex flex-col leading-tight">
                 <span
                     className={

@@ -3,6 +3,7 @@ import g2Image from "../../assets/HomePage/g2.png"
 import g3Image from "../../assets/HomePage/g3.png"
 import ScrollReveal from '../home/ScrollReveal'
 import MobileStylistSection from './MobileStylistSection'
+import ShimmerImage from './ShimmerImage'
 
 export default function StyleClosetSection() {
     return (
@@ -38,7 +39,7 @@ export default function StyleClosetSection() {
 
                     {/* Image: appears first on mobile, second on desktop */}
                     <div className="order-1 relative flex items-center justify-center md:order-2 md:h-[590px]">
-                        <img
+                        <ShimmerImage
                             src={g1Image}
                             alt="Style Analysis"
                             loading="lazy"
@@ -99,7 +100,7 @@ export default function StyleClosetSection() {
 
                     {/* Image: appears second on mobile */}
                     <div className="order-2 relative h-[350px]flex items-center justify-center md:order-1 md:h-[590px]">
-                        <img
+                        <ShimmerImage
                             src={g2Image}
                             alt="Smart Closet"
                             loading="lazy"
@@ -143,7 +144,7 @@ export default function StyleClosetSection() {
 
                     {/* Image: appears second on mobile */}
                     <div className="order-2 relative flex items-center justify-center md:h-[590px]">
-                        <img
+                        <ShimmerImage
                             src={g3Image}
                             alt="Shop Recommendations"
                             loading="lazy"

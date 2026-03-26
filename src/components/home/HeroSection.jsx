@@ -3,6 +3,7 @@ import { Silhouette, StoreBadge } from './HeroPrimitives'
 import woman1Image from '../../assets/HomePage/Woman 1.jpg'
 import woman2Image from '../../assets/HomePage/Woman 2.jpg'
 import woman3Image from '../../assets/HomePage/Woman 3.jpg'
+import ShimmerImage from './ShimmerImage'
 
 const slides = [
     {
@@ -77,7 +78,7 @@ export default function HeroSection() {
                         <div
                             className={`relative h-full w-full bg-cover bg-center transition-transform duration-[6000ms] ease-out group-hover:scale-105`}
                         >
-                            <img
+                            <ShimmerImage
                                 src={slide.imgPath}
                                 alt={`Woman ${idx + 1}`}
                                 loading={idx === 0 ? 'eager' : 'lazy'}
@@ -139,7 +140,7 @@ export default function HeroSection() {
                             <div
                                 className="relative h-full w-full bg-cover bg-center transition-transform duration-[6000ms] ease-out"
                             >
-                                <img
+                                <ShimmerImage
                                     src={slide.imgPath}
                                     alt={`Woman ${idx + 1}`}
                                     loading={idx === 1 ? 'eager' : 'lazy'}

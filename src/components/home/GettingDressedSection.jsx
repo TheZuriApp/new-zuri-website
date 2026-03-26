@@ -2,6 +2,7 @@ import p1Image from '../../assets/HomePage/p1.png'
 import p2Image from '../../assets/HomePage/p2.png'
 import p3Image from '../../assets/HomePage/p3.png'
 import p4Image from '../../assets/HomePage/p4.png'
+import ShimmerImage from './ShimmerImage'
 
 export default function GettingDressedSection() {
     return (
@@ -60,7 +61,7 @@ export default function GettingDressedSection() {
                         Look like your most<br />confident, fabulous self
                     </p>
                     <div style={{ flex: 1, overflow: "hidden", marginLeft: "24px" }}>
-                        <img
+                        <ShimmerImage
                             src={p1Image}
                             alt="Confident woman at dinner"
                             loading="lazy"
@@ -113,7 +114,7 @@ export default function GettingDressedSection() {
                         Walk in knowing your outfit looks right
                     </p>
                     <div style={{ flex: 1, overflow: "hidden", marginLeft: "40px" }}>
-                        <img
+                        <ShimmerImage
                             src={p2Image}
                             alt="Woman with coffee at home"
                             loading="lazy"
@@ -166,7 +167,7 @@ export default function GettingDressedSection() {
                         Decide what to wear in seconds
                     </p>
                     <div style={{ flex: 1, overflow: "hidden", marginLeft: "40px" }}>
-                        <img
+                        <ShimmerImage
                             src={p3Image}
                             alt="Woman working out"
                             loading="lazy"
@@ -219,7 +220,7 @@ export default function GettingDressedSection() {
                         Get compliments more often
                     </p>
                     <div style={{ flex: 1, overflow: "hidden", marginLeft: "24px", borderRadius: "18px 0 18px 0" }}>
-                        <img
+                        <ShimmerImage
                             src={p4Image}
                             alt="Professional woman"
                             loading="lazy"
@@ -256,7 +257,7 @@ export default function GettingDressedSection() {
 
                         {/* Image */}
                         <div className="mt-2 w-full overflow-hidden rounded-[8px]">
-                            <img
+                            <ShimmerImage
                                 src={item.img}
                                 alt="card"
                                 loading="lazy"
