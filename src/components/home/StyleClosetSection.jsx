@@ -99,7 +99,7 @@ export default function StyleClosetSection() {
                     </div>
 
                     {/* Image: appears second on mobile */}
-                    <div className="order-2 relative h-[350px]flex items-center justify-center md:order-1 md:h-[590px]">
+                    <div className="order-2 relative h-[300px]flex items-center justify-center md:order-1 md:h-[590px]">
                         <ShimmerImage
                             src={g2Image}
                             alt="Smart Closet"

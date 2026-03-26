@@ -16,7 +16,7 @@ export function StoreBadge({ apple = false, mobile = false }) {
 
     return (
         <a href="#" className={containerClasses}>
-            <ShimmerImage src={iconSrc} alt={main} className={iconSize} />
+            <ShimmerImage src={iconSrc} alt={main} shimmer={false} className={iconSize} />
             <span className="flex flex-col leading-tight">
                 <span
                     className={
