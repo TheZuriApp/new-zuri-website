@@ -9,20 +9,19 @@ import ShimmerImage from "./ShimmerImage";
 
 export default function FooterSection() {
   return (
-    <section className="mt-6 bg-white md:mt-8 md:p-6 ">
-      {/* Top card: "Zuri keeps getting smarter" */}
-      <div className="mx-0 w-full rounded-[20px] bg-white px-2 py-9 md:bg-[#F7F7F7] md:px-12 md:py-14">
-        <p className="mb-2 text-[0.95rem] tracking-[0.01em] text-[#666666] md:text-center md:text-[1.25rem]">
+    <section className="mt-0 bg-white md:mt-8 md:p-6">
+      <div className="mx-0 w-full rounded-[20px] bg-white px-3 py-8 sm:px-3.5 sm:py-9 md:bg-[#F7F7F7] md:px-12 md:py-14">
+        <p className="mb-1.5 text-[0.8125rem] tracking-[0.01em] text-[#666666] sm:mb-2 sm:text-[0.9rem] md:text-center md:text-[1.25rem]">
           And there&apos;s more
         </p>
-        <h2 className="mb-8 text-[clamp(1.6rem,5vw,2.67rem)] leading-tight text-[#2A2A2A] md:mb-13 md:text-center md:font-normal font-medium">
+        <h2 className="mb-6 text-[clamp(1.38rem,4.8vw,2.67rem)] leading-[1.12] text-[#2A2A2A] sm:mb-7 md:mb-13 md:text-center md:font-normal md:leading-tight font-medium">
           Zuri keeps getting smarter
           <br />
           the more you use it
         </h2>
 
         {/* Articles: horizontal on desktop, vertical list on mobile */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-0">
+        <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-3 md:gap-0">
           {/* Article 1 */}
           <article className="flex flex-col gap-3 pb-6 md:pb-0 md:pr-8 md:gap-3.5">
             {/* Mobile: icon + title inline */}
@@ -35,12 +34,12 @@ export default function FooterSection() {
                   decoding="async"
                 />
               </div>
-              <p className="text-[17px] font-medium text-[#2A2A2A] md:text-[21px]">
+              <p className="text-[15px] font-medium leading-snug text-[#2A2A2A] sm:text-base md:text-[21px]">
                 Save outfits/looks you
                 <br className="hidden md:block" /> know already work
               </p>
             </div>
-            <p className="text-[0.85rem] text-[#2A2A2A] md:mt-8 md:text-[0.8rem]">
+            <p className="text-[0.8125rem] leading-relaxed text-[#2A2A2A] sm:text-[0.84375rem] md:mt-8 md:text-[0.8rem]">
               Upload and name outfits from your gallery so you can find them
               instantly when you need them.
             </p>
@@ -57,11 +56,11 @@ export default function FooterSection() {
                   decoding="async"
                 />
               </div>
-              <p className="text-[17px] font-medium text-[#2A2A2A] md:text-[21px]">
+              <p className="text-[15px] font-medium leading-snug text-[#2A2A2A] sm:text-base md:text-[21px]">
                 Any Outfit in Seconds
               </p>
             </div>
-            <p className="text-[0.85rem] text-[#2A2A2A] md:mt-8 md:text-[0.8rem]">
+            <p className="text-[0.8125rem] leading-relaxed text-[#2A2A2A] sm:text-[0.84375rem] md:mt-8 md:text-[0.8rem]">
               Search &quot;brunch&quot;, &quot;black dress&quot;, or &quot;Goa
               trip&quot; and Zuri pulls it up.
             </p>
@@ -78,11 +77,11 @@ export default function FooterSection() {
                   decoding="async"
                 />
               </div>
-              <p className="text-[17px] font-medium text-[#2A2A2A] md:text-[21px]">
+              <p className="text-[15px] font-medium leading-snug text-[#2A2A2A] sm:text-base md:text-[21px]">
                 Zuri Magazine
               </p>
             </div>
-            <p className="text-[0.85rem] text-[#2A2A2A] md:mt-8 md:text-[0.8rem]">
+            <p className="text-[0.8125rem] leading-relaxed text-[#2A2A2A] sm:text-[0.84375rem] md:mt-8 md:text-[0.8rem]">
               Practical style ideas. Not runway fantasy. Learn what works for
               real wardrobes, real bodies, real life.
             </p>
@@ -91,29 +90,27 @@ export default function FooterSection() {
       </div>
 
       {/* Bottom card: CTA + store badges */}
-      <div className="mt-6 w-full rounded-tl-[40px] rounded-tr-[40px] bg-[#EEEEEE] py-4 md:mt-5 md:rounded-[20px] md:px-12 md:py-14">
+      <div className="mt-5 w-full rounded-tl-[40px] rounded-tr-[40px] bg-[#EEEEEE] px-2 py-5 sm:mt-6 sm:py-6 md:mt-5 md:rounded-[20px] md:px-12 md:py-14">
         {/* Mobile: fully centered, stacked. Desktop: 2-col grid */}
-        <div className="mb-7 md:mb-9 md:grid md:grid-cols-2 md:items-start md:gap-10">
-          {/* Left: heading + social */}
+        <div className="mb-6 md:mb-9 md:grid md:grid-cols-2 md:items-start md:gap-10">
           <div className="text-center md:text-left">
-            <h2 className="mb-2.5 text-[clamp(1.5rem,5vw,2.14rem)] leading-tight text-[#2A2A2A] font-medium md:font-normal">
+            <h2 className="mb-2 text-[clamp(1.35rem,4.7vw,2.14rem)] leading-[1.12] text-[#2A2A2A] font-medium sm:mb-2.5 sm:leading-tight md:font-normal">
               Ready to meet your most
               <br />
               confident, fabulous self?
             </h2>
-            <p className="text-[0.9rem] font-medium text-[#666666]">
+            <p className="text-[0.8125rem] font-medium leading-snug text-[#666666] sm:text-sm">
               Download Zuri and start dressing with confidence.
             </p>
 
-            {/* Store badges: stacked + centered on mobile, hidden here; shown in right col on desktop */}
-            <div className="mt-6 flex flex-col items-center gap-3.5 md:hidden">
-              <StoreBadge className="w-full max-w-[220px]" />
-              <StoreBadge apple className="w-full max-w-[220px]" />
+            <div className="mt-5 flex flex-col items-center gap-3 sm:mt-6 sm:gap-3.5 md:hidden">
+              <StoreBadge className="w-full max-w-55" />
+              <StoreBadge apple className="w-full max-w-55" />
             </div>
 
             {/* Social links */}
-            <div className="mt-6 flex flex-col items-center gap-3 md:mt-12 md:flex-row md:items-center">
-              <span className="text-[1.2rem] text-[#121212] md:text-[1.5rem] md:mr-8">
+            <div className="mt-5 flex flex-col items-center gap-2.5 sm:mt-6 sm:gap-3 md:mt-12 md:flex-row md:items-center">
+              <span className="text-[1.05rem] text-[#121212] sm:text-lg md:text-2xl md:mr-8">
                 Connect with us on
               </span>
               <div className="flex gap-3">
@@ -147,7 +144,7 @@ export default function FooterSection() {
 
           {/* Right: store badges — desktop only */}
           <div className="hidden md:block">
-            <p className="mb-3.5 text-[1.5rem] text-[#121212]">Find us on</p>
+            <p className="mb-3.5 text-2xl text-[#121212]">Find us on</p>
             <div className="flex flex-col gap-4 md:flex-row md:flex-wrap md:gap-3">
               <StoreBadge />
               <StoreBadge apple />
@@ -163,7 +160,7 @@ export default function FooterSection() {
           <div className="flex flex-col items-center gap-6 md:hidden justify-between">
             <a
               href="#"
-              className="cursor-pointer text-[1rem] text-[#121212] underline underline-offset-[3px]"
+              className="cursor-pointer text-base text-[#121212] underline underline-offset-2"
             >
               Privacy Policy
             </a>
@@ -181,7 +178,7 @@ export default function FooterSection() {
 
           {/* Desktop layout */}
           <div className="hidden md:flex md:flex-row md:items-center md:justify-between md:gap-4">
-            <span className="text-[1rem] text-[#666666]">
+            <span className="text-base text-[#666666]">
               ©All Rights Reserved 2026
             </span>
             <ShimmerImage
@@ -193,7 +190,7 @@ export default function FooterSection() {
             />
             <a
               href="#"
-              className="cursor-pointer text-[1rem] text-[#121212] underline underline-offset-[3px]"
+              className="cursor-pointer text-base text-[#121212] underline underline-offset-2"
             >
               Privacy Policy
             </a>

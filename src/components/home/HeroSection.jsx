@@ -31,6 +31,10 @@ export default function HeroSection() {
   const [isSliding, setIsSliding] = useState(true);
   const startX = useRef(0);
   const mobileViewportRef = useRef(null);
+  const mobileTrackRef = useRef(null);
+  const loopFallbackRef = useRef(null);
+  const currentRef = useRef(1);
+  const lastMobileIndex = mobileSlides.length - 1;
   const [mobileSlidePx, setMobileSlidePx] = useState(0);
 
   const measureMobileHero = () => {
@@ -43,6 +47,10 @@ export default function HeroSection() {
     measureMobileHero();
   }, []);
 
+  useLayoutEffect(() => {
+    currentRef.current = current;
+  }, [current]);
+
   useEffect(() => {
     const el = mobileViewportRef.current;
     if (!el || typeof ResizeObserver === "undefined") return;
@@ -53,19 +61,45 @@ export default function HeroSection() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrent((prev) => prev + 1);
+      setCurrent((prev) => {
+        if (prev < lastMobileIndex) return prev + 1;
+        return prev;
+      });
     }, 3000);
     return () => clearInterval(timer);
-  }, []);
+  }, [lastMobileIndex]);
 
-  const onTransitionEnd = () => {
-    if (current === 0) {
+  useEffect(() => {
+    if (current !== lastMobileIndex) return;
+    if (loopFallbackRef.current) clearTimeout(loopFallbackRef.current);
+    loopFallbackRef.current = setTimeout(() => {
+      loopFallbackRef.current = null;
+      if (currentRef.current !== lastMobileIndex) return;
+      setIsSliding(false);
+      setCurrent(1);
+    }, 650);
+    return () => {
+      if (loopFallbackRef.current) {
+        clearTimeout(loopFallbackRef.current);
+        loopFallbackRef.current = null;
+      }
+    };
+  }, [current, lastMobileIndex]);
+
+  const onTransitionEnd = (event) => {
+    if (event.target !== mobileTrackRef.current) return;
+    if (event.propertyName !== "transform") return;
+    if (loopFallbackRef.current) {
+      clearTimeout(loopFallbackRef.current);
+      loopFallbackRef.current = null;
+    }
+    const c = currentRef.current;
+    if (c === 0) {
       setIsSliding(false);
       setCurrent(slides.length);
       return;
     }
-
-    if (current === slides.length + 1) {
+    if (c === lastMobileIndex) {
       setIsSliding(false);
       setCurrent(1);
     }
@@ -85,9 +119,11 @@ export default function HeroSection() {
   const onTouchEnd = (event) => {
     const endX = event.changedTouches[0]?.clientX ?? 0;
     const diff = startX.current - endX;
-    if (Math.abs(diff) > 40) {
-      setCurrent((prev) => (diff > 0 ? prev + 1 : prev - 1));
-    }
+    if (Math.abs(diff) <= 40) return;
+    setCurrent((prev) => {
+      const next = diff > 0 ? prev + 1 : prev - 1;
+      return Math.max(0, Math.min(lastMobileIndex, next));
+    });
   };
 
   return (
@@ -152,6 +188,7 @@ export default function HeroSection() {
         onTouchEnd={onTouchEnd}
       >
         <div
+          ref={mobileTrackRef}
           className={`relative z-0 flex h-full ${isSliding ? "transition-transform duration-500 ease-in-out" : ""}`}
           style={{
             transform: `translateX(-${current * mobileSlidePx}px)`,
@@ -164,7 +201,7 @@ export default function HeroSection() {
               className="relative h-full shrink-0"
               style={{ width: `${mobileSlidePx}px` }}
             >
-              <div className="relative h-full w-full bg-cover bg-center transition-transform duration-6000 ease-out">
+              <div className="relative h-full w-full bg-cover bg-center">
                 <ShimmerImage
                   src={slide.imgPath}
                   alt={`Woman ${idx + 1}`}
@@ -180,21 +217,21 @@ export default function HeroSection() {
 
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[47%] bg-[linear-gradient(to_top,rgba(0,0,0,0.9)_0%,rgba(0,0,0,0.52)_48%,transparent_100%)]" />
 
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex flex-col items-center px-5 pb-7 pt-4 text-center min-[400px]:px-6">
-          <h2 className="max-w-[20ch] text-[clamp(1.65rem,5.8vw,2.35rem)] font-medium leading-[1.05] text-white">
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex flex-col items-center px-4 pb-6 pt-3 text-center sm:px-5 sm:pb-7 sm:pt-4 min-[400px]:px-6">
+          <h2 className="max-w-[18ch] text-[clamp(1.45rem,5.5vw,2.2rem)] font-medium leading-[1.08] text-white sm:max-w-[20ch] sm:text-[clamp(1.55rem,5.6vw,2.35rem)]">
             Show up looking
           </h2>
 
-          <p className="mt-1.5 text-[clamp(0.8rem,3.2vw,0.95rem)] text-white/92">
+          <p className="mt-2 text-[0.8125rem] font-normal leading-snug text-white/93 sm:mt-2.5 sm:text-sm min-[400px]:text-[0.9375rem]">
             Confident. Fabulous. Unforgettable.
           </p>
 
-          <p className="mb-4 mt-2 max-w-[42ch] text-[clamp(0.7rem,2.85vw,0.8125rem)] font-normal leading-[1.55] text-white/78">
+          <p className="mb-3 mt-2.5 max-w-[40ch] text-[0.8125rem] font-normal leading-[1.58] text-white/80 sm:mb-4 sm:mt-3 sm:max-w-[42ch] sm:text-[0.84375rem] min-[400px]:text-sm">
             Zuri is a personal styling app that helps you always know what to
             wear for work, weekends, weddings, and everything in between.
           </p>
 
-          <div className="pointer-events-auto flex w-full max-w-[240px] flex-col items-stretch gap-2.5 min-[480px]:max-w-[260px]">
+          <div className="pointer-events-auto flex w-full max-w-57.5 flex-col items-stretch gap-2 sm:max-w-60 sm:gap-2.5 min-[480px]:max-w-65">
             <StoreBadge mobile className="w-full justify-center" />
             <StoreBadge apple mobile className="w-full justify-center" />
           </div>

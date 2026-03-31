@@ -6,8 +6,8 @@ import ShimmerImage from "./ShimmerImage";
 
 export default function GettingDressedSection() {
   return (
-    <section className="rounded-3xl bg-white px-0 py-9 sm:py-10 md:mt-8 md:px-6 md:py-16">
-      <h2 className="mb-7 text-center text-[1.48rem] font-normal leading-[1.12] tracking-tight text-[#2A2A2A] min-[400px]:text-[1.55rem] md:mb-12 md:text-[clamp(2rem,3.5vw,2.8rem)]">
+    <section className="rounded-3xl bg-white px-0 py-7 sm:py-8 md:mt-8 md:px-6 md:py-16">
+      <h2 className="mb-6 text-center text-[1.3125rem] font-normal leading-[1.14] tracking-tight text-[#2A2A2A] sm:mb-7 sm:text-[1.375rem] min-[400px]:text-[1.45rem] md:mb-12 md:text-[clamp(2rem,3.5vw,2.8rem)]">
         Getting dressed
         <br />
         should feel this easy
@@ -205,7 +205,7 @@ export default function GettingDressedSection() {
           </div>
         </article>
       </div>
-      <div className="mx-auto grid w-full max-w-lg grid-cols-2 gap-3 px-0 min-[420px]:max-w-xl min-[420px]:gap-[15px] md:hidden">
+      <div className="mx-auto grid w-full max-w-lg grid-cols-2 gap-2.5 px-0 min-[380px]:gap-3 min-[420px]:max-w-xl min-[420px]:gap-3.75 md:hidden">
         {[
           {
             text: "Look like your most confident, fabulous self",
@@ -217,13 +217,13 @@ export default function GettingDressedSection() {
         ].map((item, idx) => (
           <article
             key={idx}
-            className="flex min-h-0 flex-col rounded-[12px] bg-[#EEEEEE] px-1 pb-1 pt-3 min-[400px]:px-1.5 min-[400px]:pt-3.5"
+            className="flex min-h-0 flex-col rounded-xl bg-[#EEEEEE] px-1 pb-1 pt-2.5 min-[400px]:px-1.5 min-[400px]:pt-3.5"
           >
-            <p className="mb-3 min-h-[2.4rem] flex-1 px-1 text-center text-[0.8125rem] font-medium leading-[1.12] tracking-[-0.02em] text-black min-[400px]:min-h-[2.6rem] min-[400px]:text-[0.84rem]">
+            <p className="mb-2.5 min-h-[2.35rem] flex-1 px-0.5 text-center text-[0.765625rem] font-medium leading-[1.14] tracking-[-0.02em] text-black min-[360px]:text-[0.8125rem] min-[400px]:mb-3 min-[400px]:min-h-10 min-[400px]:px-1 min-[400px]:text-[0.84375rem]">
               {item.text}
             </p>
 
-            <div className="mt-auto w-full overflow-hidden rounded-[10px]">
+            <div className="mt-auto w-full overflow-hidden rounded-lg">
               <ShimmerImage
                 src={item.img}
                 alt={item.text}

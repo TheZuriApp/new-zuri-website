@@ -13,13 +13,13 @@ export function StoreBadge({ apple = false, mobile = false, className = "" }) {
   const href = apple ? IOS_APP_URL : PLAY_STORE_URL;
 
   const containerClasses = mobile
-    ? `inline-flex items-center gap-2.5 rounded-[8px] border-[0.22px] border-white bg-black/55 ${
+    ? `inline-flex items-center gap-2.5 rounded-lg border-[0.22px] border-white bg-black/55 ${
         apple ? "px-3" : "px-4"
       } py-2.5 text-white no-underline backdrop-blur-md`
-    : `inline-flex items-center gap-2 rounded-[8px] border-[0.22px] border-white bg-zinc-950 ${
+    : `inline-flex items-center gap-2 rounded-lg border-[0.22px] border-white bg-zinc-950 ${
         apple ? "px-2.5" : "px-3.5"
       } py-1.5 text-white no-underline transition-colors hover:bg-zinc-900`;
-  const iconSize = mobile ? "h-[30px] w-[30px]" : "h-[30px] w-[30px]";
+  const iconSize = "size-7.5";
 
   return (
     <a
