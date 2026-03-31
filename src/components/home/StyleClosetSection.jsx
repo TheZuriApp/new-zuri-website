@@ -1,9 +1,53 @@
+import { useEffect, useRef, useState } from "react";
 import g1Image from "../../assets/HomePage/g1.png";
-import g2Image from "../../assets/HomePage/g2.png";
+import closetVideo from "../../assets/HomePage/video_closet.mp4";
 import g3Image from "../../assets/HomePage/g3.png";
 import ScrollReveal from "./ScrollReveal";
 import MobileStylistSection from "./MobileStylistSection";
 import ShimmerImage from "./ShimmerImage";
+
+function ClosetDemoVideo({ src }) {
+  const rootRef = useRef(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
+
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setShouldLoad(true);
+            observer.disconnect();
+            return;
+          }
+        }
+      },
+      { rootMargin: "140px", threshold: 0.01 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={rootRef} className="flex h-full min-h-0 w-full items-center justify-center">
+      {shouldLoad ? (
+        <video
+          className="h-full w-full object-contain"
+          src={src}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          aria-label="Smart closet demo"
+        />
+      ) : (
+        <div className="h-full w-full" aria-hidden />
+      )}
+    </div>
+  );
+}
 
 export default function StyleClosetSection() {
   return (
@@ -103,13 +147,7 @@ export default function StyleClosetSection() {
 
           {/* Image: appears second on mobile */}
           <div className="order-2 relative flex h-[300px] items-center justify-center md:order-1 md:h-[590px]">
-            <ShimmerImage
-              src={g2Image}
-              alt="Smart Closet"
-              loading="lazy"
-              decoding="async"
-              className="h-full w-full object-contain"
-            />
+            <ClosetDemoVideo src={closetVideo} />
           </div>
         </section>
       </ScrollReveal>
