@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { Silhouette, StoreBadge } from "./HeroPrimitives";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { StoreBadge } from "./HeroPrimitives";
 import woman1Image from "../../assets/HomePage/Woman 1.jpg";
 import woman2Image from "../../assets/HomePage/Woman 2.jpg";
 import woman3Image from "../../assets/HomePage/Woman 3.jpg";
@@ -22,10 +22,34 @@ const slides = [
 
 const mobileSlides = [slides[slides.length - 1], ...slides, slides[0]];
 
+const HERO_MOBILE_SLIDE_RATIO = 422 / 375;
+const HERO_MOBILE_FRAME_W = 375;
+const HERO_MOBILE_FRAME_H = 771;
+
 export default function HeroSection() {
   const [current, setCurrent] = useState(1);
   const [isSliding, setIsSliding] = useState(true);
   const startX = useRef(0);
+  const mobileViewportRef = useRef(null);
+  const [mobileSlidePx, setMobileSlidePx] = useState(0);
+
+  const measureMobileHero = () => {
+    const el = mobileViewportRef.current;
+    if (!el) return;
+    setMobileSlidePx(Math.max(1, el.clientWidth * HERO_MOBILE_SLIDE_RATIO));
+  };
+
+  useLayoutEffect(() => {
+    measureMobileHero();
+  }, []);
+
+  useEffect(() => {
+    const el = mobileViewportRef.current;
+    if (!el || typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver(() => measureMobileHero());
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -68,7 +92,7 @@ export default function HeroSection() {
 
   return (
     <>
-      <section className="relative hidden h-145 overflow-hidden rounded-2xl md:grid md:grid-cols-3 mx-3">
+      <section className="relative hidden h-145 min-h-72 w-full min-w-0 overflow-hidden rounded-2xl lg:grid lg:grid-cols-3">
         {slides.map((slide, idx) => (
           <div
             key={slide.key}
@@ -76,10 +100,10 @@ export default function HeroSection() {
           >
             {/* Divider between slides */}
             {idx < slides.length - 1 && (
-              <div className="absolute right-0 top-0 z-10 h-full w-[1px] bg-white/15" />
+              <div className="absolute right-0 top-0 z-10 h-full w-px bg-white/15" />
             )}
             <div
-              className={`relative h-full w-full bg-cover bg-center transition-transform duration-[6000ms] ease-out group-hover:scale-105`}
+              className={`relative h-full w-full bg-cover bg-center transition-transform duration-6000 ease-out group-hover:scale-105`}
             >
               <ShimmerImage
                 src={slide.imgPath}
@@ -91,13 +115,13 @@ export default function HeroSection() {
               />
             </div>
             {/* Gradient Overlay */}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-transparent" />
+            <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-black/5 via-transparent to-transparent" />
           </div>
         ))}
 
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-[55%] bg-[linear-gradient(to_top,rgba(0,0,0,0.82)_0%,rgba(0,0,0,0.45)_50%,transparent_100%)]" />
 
-        <div className="absolute inset-x-0 bottom-0 z-30 flex items-end justify-between gap-6 px-9 py-8">
+        <div className="absolute inset-x-0 bottom-0 z-30 flex flex-col items-start gap-6 px-5 py-6 sm:flex-row sm:items-end sm:px-7 sm:py-7 lg:px-9 lg:py-8">
           <div>
             <h1 className="text-[clamp(2.6rem,4vw,3.8rem)] font-extralight leading-none tracking-tight text-white">
               Show up looking
@@ -107,7 +131,7 @@ export default function HeroSection() {
             </p>
           </div>
 
-          <div className="max-w-115 shrink-0">
+          <div className="w-full max-w-md shrink-0 sm:max-w-115 lg:max-w-115">
             <p className="mb-4 text-[0.92rem] leading-[1.65] text-white font-normal">
               Zuri is a personal styling app that helps you always know what to
               wear for work, weekends, weddings, and everything in between.
@@ -121,16 +145,16 @@ export default function HeroSection() {
       </section>
 
       <section
-        // here have to adjust the height
-        className="relative h-[168vw] max-h-290 overflow-hidden rounded-2xl md:hidden mx-3"
+        ref={mobileViewportRef}
+        className="relative w-full min-w-0 overflow-hidden rounded-2xl bg-zinc-200 max-lg:max-h-[min(92svh,820px)] max-lg:min-h-[min(320px,88svh)] lg:hidden"
+        style={{ aspectRatio: `${HERO_MOBILE_FRAME_W} / ${HERO_MOBILE_FRAME_H}` }}
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
         <div
-          className={`flex h-full ${isSliding ? "transition-transform duration-500 ease-in-out" : ""}`}
+          className={`relative z-0 flex h-full ${isSliding ? "transition-transform duration-500 ease-in-out" : ""}`}
           style={{
-            width: `${mobileSlides.length * 100}%`,
-            transform: `translateX(-${(current * 100) / mobileSlides.length}%)`,
+            transform: `translateX(-${current * mobileSlidePx}px)`,
           }}
           onTransitionEnd={onTransitionEnd}
         >
@@ -138,9 +162,9 @@ export default function HeroSection() {
             <div
               key={`mobile-${slide.key}-${idx}`}
               className="relative h-full shrink-0"
-              style={{ width: `${100 / mobileSlides.length}%` }}
+              style={{ width: `${mobileSlidePx}px` }}
             >
-              <div className="relative h-full w-full bg-cover bg-center transition-transform duration-[6000ms] ease-out">
+              <div className="relative h-full w-full bg-cover bg-center transition-transform duration-6000 ease-out">
                 <ShimmerImage
                   src={slide.imgPath}
                   alt={`Woman ${idx + 1}`}
@@ -150,31 +174,30 @@ export default function HeroSection() {
                   className="h-full w-full object-cover object-top"
                 />
               </div>
-
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[65%] bg-[linear-gradient(to_top,rgba(0,0,0,0.88)_0%,rgba(0,0,0,0.5)_55%,transparent_100%)]" />
-
-              <div className="absolute inset-x-0 bottom-0 z-20 px-5.5 pb-6 pt-4 text-center flex flex-col items-center">
-                <h2 className="text-[2.3rem] font-medium leading-none text-white">
-                  Show up looking
-                </h2>
-
-                <p className="mt-1 text-[0.95rem] text-white/90">
-                  Confident. Fabulous. Unforgettable.
-                </p>
-
-                <p className="mb-3 mt-2 text-[0.72rem] leading-[1.6] text-white/75 max-w-[300px]">
-                  Zuri is a personal styling app that helps you always know what
-                  to wear for work, weekends, weddings, and everything in
-                  between.
-                </p>
-
-                <div className="flex flex-col gap-2 items-center">
-                  <StoreBadge mobile />
-                  <StoreBadge apple mobile />
-                </div>
-              </div>
             </div>
           ))}
+        </div>
+
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[47%] bg-[linear-gradient(to_top,rgba(0,0,0,0.9)_0%,rgba(0,0,0,0.52)_48%,transparent_100%)]" />
+
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex flex-col items-center px-5 pb-7 pt-4 text-center min-[400px]:px-6">
+          <h2 className="max-w-[20ch] text-[clamp(1.65rem,5.8vw,2.35rem)] font-medium leading-[1.05] text-white">
+            Show up looking
+          </h2>
+
+          <p className="mt-1.5 text-[clamp(0.8rem,3.2vw,0.95rem)] text-white/92">
+            Confident. Fabulous. Unforgettable.
+          </p>
+
+          <p className="mb-4 mt-2 max-w-[42ch] text-[clamp(0.7rem,2.85vw,0.8125rem)] font-normal leading-[1.55] text-white/78">
+            Zuri is a personal styling app that helps you always know what to
+            wear for work, weekends, weddings, and everything in between.
+          </p>
+
+          <div className="pointer-events-auto flex w-full max-w-[240px] flex-col items-stretch gap-2.5 min-[480px]:max-w-[260px]">
+            <StoreBadge mobile className="w-full justify-center" />
+            <StoreBadge apple mobile className="w-full justify-center" />
+          </div>
         </div>
       </section>
     </>

@@ -11,7 +11,7 @@ export default function FooterSection() {
   return (
     <section className="mt-6 bg-white md:mt-8 md:p-6 ">
       {/* Top card: "Zuri keeps getting smarter" */}
-      <div className="rounded-[20px] bg-white mx-3 px-2 py-9 md:bg-[#F7F7F7] md:px-12 md:py-14">
+      <div className="mx-0 w-full rounded-[20px] bg-white px-2 py-9 md:bg-[#F7F7F7] md:px-12 md:py-14">
         <p className="mb-2 text-[0.95rem] tracking-[0.01em] text-[#666666] md:text-center md:text-[1.25rem]">
           And there&apos;s more
         </p>
@@ -91,7 +91,7 @@ export default function FooterSection() {
       </div>
 
       {/* Bottom card: CTA + store badges */}
-      <div className="mt-6 md:rounded-[20px] rounded-tr-[40px] rounded-tl-[40px] bg-[#EEEEEE]  py-4 md:mt-5 md:mx-3 md:px-12 md:py-14">
+      <div className="mt-6 w-full rounded-tl-[40px] rounded-tr-[40px] bg-[#EEEEEE] py-4 md:mt-5 md:rounded-[20px] md:px-12 md:py-14">
         {/* Mobile: fully centered, stacked. Desktop: 2-col grid */}
         <div className="mb-7 md:mb-9 md:grid md:grid-cols-2 md:items-start md:gap-10">
           {/* Left: heading + social */}

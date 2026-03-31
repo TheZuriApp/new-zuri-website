@@ -4,7 +4,7 @@ import ShimmerImage from "./ShimmerImage";
 
 export default function HomeNav() {
   return (
-    <nav className="relative flex items-center justify-between bg-white px-6 py-6 md:px-28 md:py-2">
+    <nav className="relative flex items-center justify-between bg-white px-4 py-4 sm:px-6 sm:py-5 md:px-28 md:py-2">
       <ShimmerImage
         src={zuriLogo}
         className="h-6 w-auto absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0"

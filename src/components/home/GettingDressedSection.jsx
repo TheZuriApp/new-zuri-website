@@ -6,8 +6,8 @@ import ShimmerImage from "./ShimmerImage";
 
 export default function GettingDressedSection() {
   return (
-    <section className="rounded-3xl bg-white px-4 py-11 md:mt-8 md:px-6 md:py-16">
-      <h2 className="mb-8 text-center text-[1.55rem] font-normal leading-tight tracking-tight text-[#2A2A2A] md:mb-12 md:text-[clamp(2rem,3.5vw,2.8rem)]">
+    <section className="rounded-3xl bg-white px-0 py-9 sm:py-10 md:mt-8 md:px-6 md:py-16">
+      <h2 className="mb-7 text-center text-[1.48rem] font-normal leading-[1.12] tracking-tight text-[#2A2A2A] min-[400px]:text-[1.55rem] md:mb-12 md:text-[clamp(2rem,3.5vw,2.8rem)]">
         Getting dressed
         <br />
         should feel this easy
@@ -205,7 +205,7 @@ export default function GettingDressedSection() {
           </div>
         </article>
       </div>
-      <div className="grid grid-cols-2 gap-3 md:hidden px-2">
+      <div className="mx-auto grid w-full max-w-lg grid-cols-2 gap-3 px-0 min-[420px]:max-w-xl min-[420px]:gap-[15px] md:hidden">
         {[
           {
             text: "Look like your most confident, fabulous self",
@@ -217,21 +217,19 @@ export default function GettingDressedSection() {
         ].map((item, idx) => (
           <article
             key={idx}
-            className="bg-[#F3F3F3] rounded-[8px] p-2.5 flex flex-col items-center justify-between"
+            className="flex min-h-0 flex-col rounded-[12px] bg-[#EEEEEE] px-1 pb-1 pt-3 min-[400px]:px-1.5 min-[400px]:pt-3.5"
           >
-            {/* Text */}
-            <p className="text-center text-[0.95rem] font-medium leading-none tracking-[-0.02em] text-[#1c1c1c] px-1">
+            <p className="mb-3 min-h-[2.4rem] flex-1 px-1 text-center text-[0.8125rem] font-medium leading-[1.12] tracking-[-0.02em] text-black min-[400px]:min-h-[2.6rem] min-[400px]:text-[0.84rem]">
               {item.text}
             </p>
 
-            {/* Image */}
-            <div className="mt-2 w-full overflow-hidden rounded-[8px]">
+            <div className="mt-auto w-full overflow-hidden rounded-[10px]">
               <ShimmerImage
                 src={item.img}
-                alt="card"
+                alt={item.text}
                 loading="lazy"
                 decoding="async"
-                className="w-full h-[180px] object-cover"
+                className="aspect-161/204 w-full object-cover object-top"
               />
             </div>
           </article>

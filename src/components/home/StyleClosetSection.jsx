@@ -33,7 +33,7 @@ function ClosetDemoVideo({ src }) {
     <div ref={rootRef} className="flex h-full min-h-0 w-full items-center justify-center">
       {shouldLoad ? (
         <video
-          className="h-full w-full object-contain"
+          className="h-full w-full min-h-0 object-fill object-center"
           src={src}
           autoPlay
           loop
@@ -54,18 +54,17 @@ export default function StyleClosetSection() {
     <>
       {/* Section 1 */}
       <ScrollReveal delay={160}>
-        <section className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-6 px-5 py-4 md:grid-cols-[1fr_1.1fr] md:gap-14 md:px-10 md:py-20">
-          {/* Text: appears second on mobile (after image), first on desktop */}
+        <section className="mx-auto grid w-full max-w-6xl grid-cols-1 items-start gap-6 px-0 py-4 sm:gap-7 md:grid-cols-[1fr_1.1fr] md:items-center md:gap-14 md:px-6 md:py-16 lg:px-10 lg:py-20">
           <div className="order-1 md:order-1">
-            <h2 className="text-center md:text-left mb-5 text-[clamp(1.6rem,5vw,2.67rem)] font-medium md:font-normal leading-tight text-[#2A2A2A] md:mb-9">
+            <h2 className="mb-5 text-center text-[clamp(1.45rem,5.1vw,2.67rem)] font-medium leading-[1.12] text-[#2A2A2A] min-[400px]:leading-tight md:mb-9 md:text-left md:font-normal">
               Finally, understand
               <br />
               what truly suits you
             </h2>
 
-            <ul className="flex list-none flex-col gap-4">
-              <li className="flex items-start gap-3 text-[16px] leading-[1.65] text-[#444444] md:text-[24px]">
-                <span className="-mt-1 text-[1.4rem] leading-none text-[#444444] md:text-[1.6rem]">
+            <ul className="flex list-none flex-col gap-3.5 text-left md:gap-4">
+              <li className="flex items-start gap-2.5 text-[15px] leading-[1.55] text-[#444444] min-[400px]:text-[16px] md:gap-3 md:text-[24px] md:leading-[1.65]">
+                <span className="-mt-0.5 text-[1.25rem] leading-none text-[#444444] md:-mt-1 md:text-[1.6rem]">
                   ·
                 </span>
                 <span>
@@ -73,8 +72,8 @@ export default function StyleClosetSection() {
                   what actually suits you.
                 </span>
               </li>
-              <li className="flex items-start gap-3 text-[16px] leading-[1.65] text-[#444444] md:text-[24px]">
-                <span className="-mt-1 text-[1.4rem] leading-none text-[#444444] md:text-[1.6rem]">
+              <li className="flex items-start gap-2.5 text-[15px] leading-[1.55] text-[#444444] min-[400px]:text-[16px] md:gap-3 md:text-[24px] md:leading-[1.65]">
+                <span className="-mt-0.5 text-[1.25rem] leading-none text-[#444444] md:-mt-1 md:text-[1.6rem]">
                   ·
                 </span>
                 <span>
@@ -85,68 +84,71 @@ export default function StyleClosetSection() {
             </ul>
           </div>
 
-          {/* Image: appears first on mobile, second on desktop */}
-          <div className="order-1 relative flex items-center justify-center md:order-2 md:h-[590px]">
-            <ShimmerImage
-              src={g1Image}
-              alt="Style Analysis"
-              loading="lazy"
-              decoding="async"
-              className="h-auto w-full object-contain"
-            />
+          <div className="order-2 flex w-full max-w-lg justify-self-center min-[480px]:max-w-xl md:order-2 md:max-w-none md:justify-self-end md:h-[590px]">
+            <div className="flex w-full flex-col items-center md:items-stretch">
+              <div className="relative flex w-full items-center justify-center">
+                <ShimmerImage
+                  src={g1Image}
+                  alt="Style analysis on your phone"
+                  loading="lazy"
+                  decoding="async"
+                  className="h-auto w-full object-contain"
+                />
+              </div>
+              <p className="mt-3 w-full text-center text-[14px] font-normal leading-snug text-[#444444] min-[400px]:text-[15px] md:hidden">
+                Upload three photos or take a quick quiz
+              </p>
+            </div>
           </div>
         </section>
       </ScrollReveal>
 
       {/* Section 2 */}
       <ScrollReveal delay={160}>
-        <section className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-6 px-5 pb-4 pt-6 md:grid-cols-2 md:gap-14 md:px-10 md:pb-20 md:pt-14">
-          {/* Text: appears first on mobile (before image) */}
-          <div className="order-1 md:order-2">
-            <h2 className="mb-5 text-[clamp(1.6rem,5vw,2.67rem)] font-medium md:font-normal leading-tight text-[#2A2A2A] md:mb-9 text-center md:text-left">
+        <section className="mx-auto grid w-full max-w-6xl grid-cols-1 items-start gap-6 px-0 pb-6 pt-8 sm:gap-7 md:grid-cols-2 md:items-center md:gap-14 md:px-6 md:pb-16 md:pt-12 lg:px-10 lg:pb-20 lg:pt-14">
+          <div className="order-1 w-full max-w-lg justify-self-center min-[480px]:max-w-xl md:order-2 md:max-w-none md:justify-self-auto">
+            <h2 className="mb-4 text-center text-[clamp(1.45rem,5.1vw,2.67rem)] font-medium leading-[1.12] text-[#2A2A2A] min-[400px]:mb-5 min-[400px]:leading-tight md:mb-9 md:text-left md:font-normal">
               Meet the world&apos;s smartest closet that styles you
             </h2>
 
-            {/* Mobile-only intro line */}
-            <p className="text-center md:text-left mb-5 text-[15px] leading-[1.6] text-[#444444] md:hidden">
+            <p className="mb-6 text-center text-[14px] leading-[1.55] text-[#444444] min-[400px]:text-[15px] md:hidden">
               Upload photos of yourself in outfits — straight from your phone
               gallery or mirror selfies. No need to take new photos.
             </p>
 
             <div className="flex flex-col gap-5 md:gap-6">
               <div>
-                <p className="text-center md:text-left mb-1 text-[16px] font-semibold tracking-[0.01em] text-[#8A8A8A] md:text-[20px]">
+                <p className="mb-1 text-center text-[15px] font-semibold tracking-[0.01em] text-[#8A8A8A] min-[400px]:text-[16px] md:text-left md:text-[20px]">
                   Your photos, turned into a smart closet
                 </p>
-                <p className="text-center md:text-left text-[13px] leading-[1.65] text-[#121212] font-medium md:text-[14px]">
+                <p className="text-center text-[13px] font-medium leading-[1.55] text-[#121212] min-[400px]:leading-[1.65] md:text-left md:text-[14px]">
                   Zuri identifies each piece you&apos;re wearing and converts
                   them into clean flatlays.
                 </p>
               </div>
 
               <div>
-                <p className=" text-center md:text-left mb-1 text-[16px] font-semibold tracking-[0.01em] text-[#8A8A8A] md:text-[20px]">
+                <p className="mb-1 text-center text-[15px] font-semibold tracking-[0.01em] text-[#8A8A8A] min-[400px]:text-[16px] md:text-left md:text-[20px]">
                   Everything gets organised automatically
                 </p>
-                <p className="text-center md:text-left text-[13px] leading-[1.65] text-[#121212] font-medium md:text-[14px]">
+                <p className="text-center text-[13px] font-medium leading-[1.55] text-[#121212] md:text-left md:text-[14px]">
                   By colour, category, occasion, fabric and more.
                 </p>
               </div>
 
               <div>
-                <p className="text-center md:text-left mb-1 text-[16px] font-semibold tracking-[0.01em] text-[#8A8A8A] md:text-[20px]">
+                <p className="mb-1 text-center text-[15px] font-semibold tracking-[0.01em] text-[#8A8A8A] min-[400px]:text-[16px] md:text-left md:text-[20px]">
                   See your best outfits on yourself
                 </p>
-                <p className="text-center md:text-left text-[13px] leading-[1.65] text-[#121212] font-medium md:text-[14px]">
+                <p className="text-center text-[13px] font-medium leading-[1.55] text-[#121212] min-[400px]:leading-[1.65] md:text-left md:text-[14px]">
                   Zuri creates looks using your closet and shows them on you
-                  virtually before you try anything on.
+                  virtually — before you try anything on.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Image: appears second on mobile */}
-          <div className="order-2 relative flex h-[300px] items-center justify-center md:order-1 md:h-[590px]">
+          <div className="order-2 relative flex w-full max-w-[260px] justify-self-center overflow-hidden rounded-[20px] border border-black bg-zinc-100 aspect-338/396 min-h-[440px] min-[400px]:max-w-[280px] min-[400px]:min-h-[500px] min-[480px]:max-w-[300px] min-[480px]:min-h-[560px] min-[480px]:aspect-355/410 md:order-1 md:max-w-[248px] md:aspect-auto md:h-[590px] md:min-h-0 md:rounded-[22px] lg:max-w-[272px]">
             <ClosetDemoVideo src={closetVideo} />
           </div>
         </section>
@@ -158,10 +160,9 @@ export default function StyleClosetSection() {
 
       {/* Section 3 */}
       <ScrollReveal delay={160}>
-        <section className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-6 px-5 py-10 md:grid-cols-[1fr_1.1fr] md:gap-14 md:px-10 md:py-20">
-          {/* Text: appears first on mobile */}
-          <div className="order-1">
-            <h2 className="mb-5 text-[clamp(1.6rem,5vw,2.67rem)] font-medium md:font-normal leading-tight text-[#2A2A2A] md:mb-9  text-center md:text-left">
+        <section className="mx-auto grid w-full max-w-6xl grid-cols-1 items-start gap-6 px-0 py-8 sm:gap-7 md:grid-cols-[1fr_1.1fr] md:items-center md:gap-14 md:px-6 md:py-16 lg:px-10 lg:py-20">
+          <div className="order-1 w-full max-w-lg justify-self-center min-[480px]:max-w-xl md:max-w-none md:justify-self-auto">
+            <h2 className="mb-4 text-center text-[clamp(1.45rem,5.1vw,2.67rem)] font-medium leading-[1.12] text-[#2A2A2A] min-[400px]:mb-5 md:mb-9 md:text-left md:font-normal md:leading-tight">
               Stop guessing. Finally,
               <br />
               shop what actually
@@ -169,26 +170,25 @@ export default function StyleClosetSection() {
               suits you.
             </h2>
 
-            <div className="flex flex-col gap-5 md:gap-8">
+            <div className="flex flex-col gap-4 min-[400px]:gap-5 md:gap-8">
               <div>
-                <p className="text-[15px] font-medium tracking-[0.01em] text-[#666666] md:text-[18px]  text-center md:text-left">
+                <p className="text-center text-[14px] font-medium leading-[1.55] tracking-[0.01em] text-[#666666] min-[400px]:text-[15px] md:text-left md:text-[18px] md:leading-normal">
                   Zuri curates pieces that actually complete your looks — based
                   on your body type, undertone, style, plans, and budget.
                 </p>
               </div>
               <div>
-                <p className="text-[18px] text-[#121212] font-semibold md:text-[23px]  text-center md:text-left">
+                <p className="text-center text-[17px] font-semibold leading-snug text-[#121212] min-[400px]:text-[18px] md:text-left md:text-[23px]">
                   No more &ldquo;closet full of clothes, nothing to wear&rdquo;
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Image: appears second on mobile */}
-          <div className="order-2 relative flex items-center justify-center md:h-[590px]">
+          <div className="order-2 flex w-full max-w-lg justify-self-center min-[480px]:max-w-xl md:max-w-none md:h-[590px] md:justify-self-end">
             <ShimmerImage
               src={g3Image}
-              alt="Shop Recommendations"
+              alt="Personalized shopping recommendations"
               loading="lazy"
               decoding="async"
               className="h-auto w-full object-contain"

@@ -14,16 +14,16 @@ const FooterSection = lazy(() => import("../components/home/FooterSection"));
 
 export default function HomePage() {
   return (
-    <div className="homepage-shell min-h-screen bg-[rgba(255,255,255,0.2)] font-sans text-zinc-900">
+    <div className="homepage-shell min-h-screen max-w-full overflow-x-hidden bg-[rgba(255,255,255,0.2)] font-sans text-zinc-900">
       <header className="homepage-fade-in sticky top-0 z-50 w-full bg-white py-2">
         <HomeNav />
       </header>
-      <main className="mx-auto mt-3 w-full md:my-5 md:px-8 md:pb-5">
-        <ScrollReveal delay={90}>
+      <main className="mx-auto mt-2 w-full min-w-0 max-w-360 px-3 pb-4 sm:mt-3 sm:px-4 md:my-5 md:px-6 md:pb-5 lg:px-8 xl:px-10">
+        <ScrollReveal delay={90} className="w-full min-w-0">
           <HeroSection />
         </ScrollReveal>
         <SectionSuspense>
-          <ScrollReveal delay={160}>
+          <ScrollReveal delay={160} className="min-w-0 w-full">
             <GettingDressedSection />
           </ScrollReveal>
         </SectionSuspense>
@@ -31,7 +31,7 @@ export default function HomePage() {
           <StyleClosetSection />
         </SectionSuspense>
         <SectionSuspense>
-          <ScrollReveal delay={280}>
+          <ScrollReveal delay={280} className="min-w-0 w-full">
             <FooterSection />
           </ScrollReveal>
         </SectionSuspense>
