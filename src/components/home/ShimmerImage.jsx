@@ -1,54 +1,52 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from "react";
 
-export default function ShimmerImage({
-    src,
-    alt,
-    className,
-    shimmer = true,
-    onLoad,
-    onError,
-    ...imgProps
+function ShimmerImageImpl({
+  src,
+  alt,
+  className,
+  shimmer = true,
+  onLoad,
+  onError,
+  ...imgProps
 }) {
-    const imageRef = useRef(null)
-    const [status, setStatus] = useState('loading')
+  const imageRef = useRef(null);
+  const [status, setStatus] = useState("loading");
 
-    useEffect(() => {
-        setStatus('loading')
-    }, [src])
-
-    useEffect(() => {
-        const imageElement = imageRef.current
-        if (!imageElement) {
-            return
-        }
-
-        // Handles cached images that may finish loading before React fires onLoad.
-        if (imageElement.complete) {
-            setStatus(imageElement.naturalWidth > 0 ? 'loaded' : 'error')
-        }
-    }, [src])
-
-    const handleLoad = (event) => {
-        setStatus('loaded')
-        onLoad?.(event)
+  useEffect(() => {
+    const imageElement = imageRef.current;
+    if (!imageElement?.complete) {
+      return;
     }
+    queueMicrotask(() => {
+      setStatus(imageElement.naturalWidth > 0 ? "loaded" : "error");
+    });
+  }, []);
 
-    const handleError = (event) => {
-        setStatus('error')
-        onError?.(event)
-    }
+  const handleLoad = (event) => {
+    setStatus("loaded");
+    onLoad?.(event);
+  };
 
-    const isSkeletonVisible = shimmer && status !== 'loaded'
+  const handleError = (event) => {
+    setStatus("error");
+    onError?.(event);
+  };
 
-    return (
-        <img
-            ref={imageRef}
-            src={src}
-            alt={alt}
-            className={`${className ?? ''} ${isSkeletonVisible ? 'zuri-image-skeleton' : ''}`.trim()}
-            onLoad={handleLoad}
-            onError={handleError}
-            {...imgProps}
-        />
-    )
+  const isSkeletonVisible = shimmer && status !== "loaded";
+
+  return (
+    <img
+      ref={imageRef}
+      src={src}
+      alt={alt}
+      className={`${className ?? ""} ${isSkeletonVisible ? "zuri-image-skeleton" : ""}`.trim()}
+      onLoad={handleLoad}
+      onError={handleError}
+      {...imgProps}
+    />
+  );
+}
+
+export default function ShimmerImage(props) {
+  return <ShimmerImageImpl key={props.src} {...props} />;
 }
