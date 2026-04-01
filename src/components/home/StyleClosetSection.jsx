@@ -8,6 +8,7 @@ import ShimmerImage from "./ShimmerImage";
 
 function ClosetDemoVideo({ src }) {
   const rootRef = useRef(null);
+  const videoRef = useRef(null);
   const [shouldLoad, setShouldLoad] = useState(false);
 
   useEffect(() => {
@@ -29,21 +30,40 @@ function ClosetDemoVideo({ src }) {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v || !shouldLoad) return;
+    const kickPlayback = () => {
+      v.muted = true;
+      const promise = v.play();
+      if (promise !== undefined && typeof promise.catch === "function") {
+        promise.catch(() => {});
+      }
+    };
+    kickPlayback();
+    v.addEventListener("loadeddata", kickPlayback, { once: true });
+    v.addEventListener("canplay", kickPlayback, { once: true });
+  }, [shouldLoad, src]);
+
   return (
-    <div ref={rootRef} className="flex h-full min-h-0 w-full items-center justify-center">
+    <div
+      ref={rootRef}
+      className="relative h-full min-h-0 w-full overflow-hidden"
+    >
       {shouldLoad ? (
         <video
-          className="h-full w-full min-h-0 object-fill object-center"
+          ref={videoRef}
+          className="absolute inset-0 h-full w-full object-cover object-center"
           src={src}
           autoPlay
           loop
           muted
           playsInline
-          preload="metadata"
+          preload="auto"
           aria-label="Smart closet demo"
         />
       ) : (
-        <div className="h-full w-full" aria-hidden />
+        <div className="absolute inset-0 bg-zinc-100" aria-hidden />
       )}
     </div>
   );
@@ -148,7 +168,7 @@ export default function StyleClosetSection() {
             </div>
           </div>
 
-          <div className="order-2 relative flex w-full max-w-65 justify-self-center overflow-hidden rounded-[20px] border border-black bg-zinc-100 aspect-338/396 min-h-122 min-[400px]:max-w-70 min-[400px]:min-h-132 min-[480px]:max-w-75 min-[480px]:min-h-148 min-[480px]:aspect-355/410 md:order-1 md:max-w-62 md:aspect-auto md:h-[590px] md:min-h-0 md:rounded-[22px] lg:max-w-68">
+          <div className="order-2 relative isolate w-full max-w-65 justify-self-center overflow-hidden rounded-[20px] border border-black bg-zinc-100 aspect-338/396 min-h-122 min-[400px]:max-w-70 min-[400px]:min-h-132 min-[480px]:max-w-75 min-[480px]:min-h-148 min-[480px]:aspect-355/410 md:order-1 md:max-w-62 md:aspect-auto md:h-[590px] md:min-h-0 md:rounded-[22px] lg:max-w-68">
             <ClosetDemoVideo src={closetVideo} />
           </div>
         </section>
