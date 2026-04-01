@@ -48,12 +48,12 @@ function ClosetDemoVideo({ src }) {
   return (
     <div
       ref={rootRef}
-      className="relative h-full min-h-0 w-full overflow-hidden"
+      className="absolute inset-0 transform-gpu overflow-hidden"
     >
       {shouldLoad ? (
         <video
           ref={videoRef}
-          className="absolute inset-0 h-full w-full object-cover object-center"
+          className="absolute inset-0 size-full object-cover"
           src={src}
           autoPlay
           loop
@@ -168,7 +168,7 @@ export default function StyleClosetSection() {
             </div>
           </div>
 
-          <div className="order-2 relative isolate w-full max-w-65 justify-self-center overflow-hidden rounded-[20px] border border-black bg-zinc-100 aspect-338/396 min-h-122 min-[400px]:max-w-70 min-[400px]:min-h-132 min-[480px]:max-w-75 min-[480px]:min-h-148 min-[480px]:aspect-355/410 md:order-1 md:max-w-62 md:aspect-auto md:h-[590px] md:min-h-0 md:rounded-[22px] lg:max-w-68">
+          <div className="order-2 relative isolate w-full max-w-65 justify-self-center overflow-hidden rounded-[20px] border border-black bg-zinc-100 aspect-646/1396 min-h-122 min-[400px]:max-w-70 min-[400px]:min-h-132 min-[480px]:max-w-75 min-[480px]:min-h-148 md:order-1 md:mx-auto md:h-[590px] md:w-auto md:max-w-none md:min-h-0 md:rounded-[22px]">
             <ClosetDemoVideo src={closetVideo} />
           </div>
         </section>
