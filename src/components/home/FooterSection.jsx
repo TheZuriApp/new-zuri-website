@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { StoreBadge } from "./HeroPrimitives";
 import BookOpenSvg from "../../assets/HomePage/book-open.svg";
 import BookmarkSvg from "../../assets/HomePage/bookmark.svg";
@@ -115,7 +116,9 @@ export default function FooterSection() {
               </span>
               <div className="flex gap-3">
                 <a
-                  href="#"
+                  href="https://www.instagram.com/stylemezuri/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="Instagram"
                   className="flex h-12 w-12 items-center justify-center rounded-full border-[1.633px] border-[#00000033] bg-white transition hover:border-[#888] hover:bg-black/4 md:h-14 md:w-14"
                 >
@@ -127,7 +130,9 @@ export default function FooterSection() {
                   />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/company/stylemezuri"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="LinkedIn"
                   className="flex h-12 w-12 items-center justify-center rounded-full border-[1.633px] border-[#00000033] bg-white transition hover:border-[#888] hover:bg-black/4 md:h-14 md:w-14"
                 >
@@ -153,17 +158,25 @@ export default function FooterSection() {
         </div>
 
         {/* Footer bottom row */}
-        {/* Mobile: Privacy Policy centered top, then logo, then copyright */}
-        {/* Desktop: copyright | logo | privacy — in a row */}
+        {/* Mobile: legal links, then logo, then copyright */}
+        {/* Desktop: copyright | logo | legal links */}
         <div className="pt-2 md:pt-0">
           {/* Mobile layout */}
           <div className="flex flex-col items-center gap-6 md:hidden justify-between">
-            <a
-              href="#"
-              className="cursor-pointer text-base text-[#121212] underline underline-offset-2"
-            >
-              Privacy Policy
-            </a>
+            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+              <Link
+                to="/privacy-policy"
+                className="cursor-pointer text-base text-[#121212] underline underline-offset-2"
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                to="/terms-of-service"
+                className="cursor-pointer text-base text-[#121212] underline underline-offset-2"
+              >
+                Terms of Service
+              </Link>
+            </div>
             <ShimmerImage
               className="h-4"
               src={ZuriLogo}
@@ -188,12 +201,20 @@ export default function FooterSection() {
               loading="lazy"
               decoding="async"
             />
-            <a
-              href="#"
-              className="cursor-pointer text-base text-[#121212] underline underline-offset-2"
-            >
-              Privacy Policy
-            </a>
+            <div className="flex flex-wrap items-center justify-end gap-x-5 gap-y-1">
+              <Link
+                to="/privacy-policy"
+                className="cursor-pointer text-base text-[#121212] underline underline-offset-2"
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                to="/terms-of-service"
+                className="cursor-pointer text-base text-[#121212] underline underline-offset-2"
+              >
+                Terms of Service
+              </Link>
+            </div>
           </div>
         </div>
       </div>
