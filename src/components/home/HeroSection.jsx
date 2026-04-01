@@ -157,8 +157,8 @@ export default function HeroSection() {
 
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-[55%] bg-[linear-gradient(to_top,rgba(0,0,0,0.82)_0%,rgba(0,0,0,0.45)_50%,transparent_100%)]" />
 
-        <div className="absolute inset-x-0 bottom-0 z-30 flex flex-col items-start gap-6 px-5 py-6 sm:flex-row sm:items-end sm:px-7 sm:py-7 lg:px-9 lg:py-8">
-          <div>
+        <div className="absolute inset-x-0 bottom-0 z-30 flex w-full flex-col items-start gap-6 px-5 py-6 sm:flex-row sm:items-end sm:px-7 sm:py-7 lg:justify-between lg:px-9 lg:py-8">
+          <div className="shrink-0 text-left">
             <h1 className="text-[clamp(2.6rem,4vw,3.8rem)] font-extralight leading-none tracking-tight text-white">
               Show up looking
             </h1>
@@ -167,12 +167,12 @@ export default function HeroSection() {
             </p>
           </div>
 
-          <div className="w-full max-w-md shrink-0 sm:max-w-115 lg:max-w-115">
+          <div className="w-full max-w-md shrink-0 text-left sm:max-w-115 lg:max-w-115 lg:text-right">
             <p className="mb-4 text-[0.92rem] leading-[1.65] text-white font-normal">
               Zuri is a personal styling app that helps you always know what to
               wear for work, weekends, weddings, and everything in between.
             </p>
-            <div className="flex flex-wrap gap-2.5">
+            <div className="flex flex-wrap justify-start gap-2.5 lg:justify-end">
               <StoreBadge />
               <StoreBadge apple />
             </div>
