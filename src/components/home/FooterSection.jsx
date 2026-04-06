@@ -105,8 +105,8 @@ export default function FooterSection() {
             </p>
 
             <div className="mt-5 flex flex-col items-center gap-3 sm:mt-6 sm:gap-3.5 md:hidden">
-              <StoreBadge className="w-full max-w-55" />
-              <StoreBadge apple className="w-full max-w-55" />
+              <StoreBadge className="max-w-55 mx-auto" />
+              <StoreBadge apple className="max-w-55 mx-auto" />
             </div>
 
             {/* Social links */}
