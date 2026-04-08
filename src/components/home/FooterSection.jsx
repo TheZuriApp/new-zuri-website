@@ -165,6 +165,12 @@ export default function FooterSection() {
           <div className="flex flex-col items-center gap-6 md:hidden justify-between">
             <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
               <Link
+                to="/support"
+                className="cursor-pointer text-base text-[#121212] underline underline-offset-2"
+              >
+                Support
+              </Link>
+              <Link
                 to="/privacy-policy"
                 className="cursor-pointer text-base text-[#121212] underline underline-offset-2"
               >
@@ -202,6 +208,12 @@ export default function FooterSection() {
               decoding="async"
             />
             <div className="flex flex-wrap items-center justify-end gap-x-5 gap-y-1">
+              <Link
+                to="/support"
+                className="cursor-pointer text-base text-[#121212] underline underline-offset-2"
+              >
+                Support
+              </Link>
               <Link
                 to="/privacy-policy"
                 className="cursor-pointer text-base text-[#121212] underline underline-offset-2"
